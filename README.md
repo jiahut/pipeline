@@ -24,3 +24,15 @@ usage:
         12345
         2345
         345
+
+`gen`
+
+usage:
+
+1. vim `card_bin.tpl`
+
+        $month(int,1,13,True)-$card(str,15);$count(int,1,20)
+
+2. generate
+
+        gen.py card_bin.tpl 100
