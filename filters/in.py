@@ -17,7 +17,7 @@ class In:
         self._set = set(_set)
 
 
-    def check(self, line):
+    def step(self, line):
         has = False
         for idx in self._range:
             if line[:idx] in self._set:

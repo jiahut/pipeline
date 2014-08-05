@@ -16,6 +16,11 @@ class Filter(unittest.TestCase):
         output,_ = in_process.communicate()
         self.assertEqual(output.strip(),self.text)
 
+    def test_group(self):
+        group_process = subprocess.Popen("cat /tmp/_filter.test.log | filter group '\w(...)\w'", stdout=subprocess.PIPE, shell=True)
+        output,_ = group_process.communicate()
+        self.assertEqual(output.strip(),"234")
+
     def setUp(self):
         self.text = '''\
 12345
@@ -27,7 +32,7 @@ class Filter(unittest.TestCase):
 
 
     def tearDown(self):
-        os.remove("/tmp/_filter.test.log")
+       os.remove("/tmp/_filter.test.log")
 
 if __name__ == '__main__':
     unittest.main()

@@ -6,7 +6,7 @@ class Group:
         self.pattern = re.compile(pattern)
 
 
-    def check(self, line):
+    def step(self, line):
         res = re.match(self.pattern, line)
         if res:
             return "\t".join(res.groups())

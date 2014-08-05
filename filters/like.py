@@ -11,6 +11,6 @@ class Like:
         self.pattern = re.compile(pattern)
 
 
-    def check(self, line):
+    def step(self, line):
         if re.match(self.pattern,line):
             return line.strip()
