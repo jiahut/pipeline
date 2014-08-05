@@ -22,4 +22,5 @@ class In:
         for idx in self._range:
             if line[:idx] in self._set:
                 has = True
-        return has
+        if has:
+            return line.strip()

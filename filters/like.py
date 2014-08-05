@@ -12,4 +12,5 @@ class Like:
 
 
     def check(self, line):
-        return re.match(self.pattern,line) is not None
+        if re.match(self.pattern,line):
+            return line.strip()

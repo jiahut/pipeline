@@ -16,7 +16,8 @@ if __name__ == "__main__":
     if "setup" in dir(cond):
         cond.setup()
     for line in sys.stdin:
-        if cond.check(line):
-            print(line.strip())
+        res = cond.check(line)
+        if res:
+            print(res)
     if "release" in dir(cond):
         cond.release()
