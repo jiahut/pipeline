@@ -2,7 +2,8 @@ import re
 
 class Group:
 
-    def __init__(self, pattern):
+    def __init__(self, pattern, options):
+        self.options = options
         self.pattern = re.compile(pattern)
 
 

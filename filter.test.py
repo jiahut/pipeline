@@ -21,6 +21,11 @@ class Filter(unittest.TestCase):
         output,_ = group_process.communicate()
         self.assertEqual(output.strip(),"234")
 
+    def test_in_with_options(self):
+        in_process = subprocess.Popen("cat ./test/test.in.source | filter in ./test/test.in.set -s, -p0", stdout=subprocess.PIPE, shell=True)
+        output,_ = in_process.communicate()
+        self.assertEqual(output.strip(),"hello,world")
+
     def setUp(self):
         self.text = '''\
 12345

@@ -7,7 +7,8 @@ class Like:
     # def release(self):
     #     pass
 
-    def __init__(self, pattern):
+    def __init__(self, pattern, options):
+        self.options = options
         self.pattern = re.compile(pattern)
 
 

@@ -7,7 +7,9 @@ class In:
     # def release(self):
     #     pass
 
-    def __init__(self, file_name):
+    def __init__(self, file_name, options):
+        self.split = options.split
+        self.pos = options.pos
         _set = []
         self._range = set()
         for line in io.open(file_name,"r").readlines():
@@ -20,7 +22,7 @@ class In:
     def step(self, line):
         has = False
         for idx in self._range:
-            if line[:idx] in self._set:
+            if line.split(self.split)[self.pos][:idx] in self._set:
                 has = True
         if has:
             return line.strip()

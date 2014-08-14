@@ -2,17 +2,24 @@
 
 import sys
 import os
+from optparse import OptionParser
 
+parser = OptionParser(usage="usage: %prog [options] module_name pattern")
+parser.add_option("-s", "--split", dest="split", type="string", default=",", metavar="seg",
+                  help="which seg do you use for split")
+parser.add_option("-p", "--pos", dest="pos", type="int",default=0,metavar="position",
+                  help="which position do you use")
+(options, args) = parser.parse_args()
 
 filter_path =  os.path.join(os.path.dirname(os.path.abspath(__file__)),"filters")
 sys.path.insert(0, filter_path)
 
 if __name__ == "__main__":
-    module_name, pattern = sys.argv[1:]
+    module_name, pattern = args
     # print(condition, args)
     cond_mod = __import__(module_name)
     cond_clz = getattr(cond_mod, module_name.title())
-    cond = cond_clz(pattern)
+    cond = cond_clz(pattern, options)
     if "setup" in dir(cond):
         cond.setup()
     for line in sys.stdin:
