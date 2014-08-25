@@ -25,6 +25,13 @@ def int_generator(count=1, begin=1, end=101, is_fill=False):
         else:
             yield str(random.randrange(begin,end))
 
+
+@register("file")
+def file_generator(count=1, path="not_found.seed"):
+    lines = [line.strip() for line in open(path,"r").readlines()]
+    for _ in range(count):
+        yield random.choice(lines)
+
 def generator(count, the_type, *args):
     # if the_type == 'int':
     #     return int_generator(count, *args)
